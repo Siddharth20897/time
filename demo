@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+class time
+{
+    int hours,minutes,seconds;
+    public :
+    time()
+    {
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+    }
+    time(int h,int m,int s)
+    {
+       hours  = h;
+       minutes = m;
+       seconds = s;
+    }
+    void display()
+    { 
+        cout<<" "<<hours<<":"<<minutes<<":"<<seconds<<endl;
+    }
+    void calculate()
+    {
+    if(seconds >= 59){
+        minutes++;
+        seconds = seconds - 59;
+    }
+        if(minutes >= 59)
+    {
+        hours++;
+        minutes = minutes - 59;
+    }
+        if(hours > 11)
+        hours = hours - 12;
+         cout<<" "<<hours<<":"<<minutes<<":"<<seconds<<endl;
+    }
+    time add(time t)
+    {
+      time temp;
+      temp.hours = hours + t.hours;
+      temp.minutes = minutes + t.minutes;
+      temp.seconds = seconds + t.seconds;
+      return temp;
+    }
+};
+int main()
+{
+    time t1(3,23,45),t2(11,23,45),t3(5,55,55);
+    time t4;
+    t1.display();
+    t2.display();
+    t3.display();
+    t4 = t1.add(t2);
+    t4.calculate();
+    return 0;
+}
